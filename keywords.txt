@@ -1,0 +1,18 @@
+#######################################
+# Syntax Coloring Map For HXServo
+#######################################
+
+#######################################
+# Class (KEYWORD1)
+#######################################
+HXServo	              KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+readServo             KEYWORD2
+writeServo            KEYWORD2
+changeToI2C           KEYWORD2
+changeToSerial        KEYWORD2
+changeSerialTimeout   KEYWORD2
