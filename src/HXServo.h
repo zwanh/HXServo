@@ -10,13 +10,16 @@
 class HXZXServo
 {
  public:
+  //setting status
   const static uint8_t SETTING_OK    =   0x01; ///设置寄存器数据成功 只能从机发送
   const static uint8_t SETTING_FAIL  =   0x02; ///设置寄存器数据失败 只能从机发送
 
+  //control bytes
   const static uint8_t READ_REG    = 0x01; ///读寄存器数据 只能从机发送
   const static uint8_t WRITE_REG   = 0x02; ///写寄存器数据 只能主机发送
   const static uint8_t ANSWER      = 0x03; ///舵机应答 只能舵机发送
 
+  //register addresses statement
   const static uint8_t POSITION_REGADDR = 0x01; ///位置寄存器 可读写
   const static uint8_t SPEED_REGADDR    = 0x02; ///速度寄存器 可读写
   const static uint8_t ADDR_REGADDR     = 0x03; ///舵机在通信总线上的地址寄存器 可读写
