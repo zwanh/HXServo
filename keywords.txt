@@ -5,7 +5,7 @@
 #######################################
 # Class (KEYWORD1)
 #######################################
-HXServo	              KEYWORD1
+HXServo	              KEYWORD1    HXServo
 
 #######################################
 # Methods and Functions (KEYWORD2)

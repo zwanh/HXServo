@@ -1,6 +1,7 @@
 #include "HXServo.h"
+#include "Wire.h"
 
-HXZXServo::HXZXServo()
+HXServo::HXServo()
 {
     Mode = I2C;
     serial = NULL;
@@ -9,7 +10,7 @@ HXZXServo::HXZXServo()
     Wire.begin(); // join i2c bus (address optional for master)
 }
 
-HXZXServo::HXZXServo(HardwareSerial *serial1, uint16_t baud)
+HXServo::HXServo(HardwareSerial *serial1, uint16_t baud)
 {
     Mode=USART_2_WIRE;
     Baudrate=baud;
@@ -21,7 +22,7 @@ HXZXServo::HXZXServo(HardwareSerial *serial1, uint16_t baud)
     while (!(*serial));
 }
 
-HXZXServo::HXZXServo(HardwareSerial *serial1, uint16_t baud, uint8_t txEn, uint8_t rxEn)
+HXServo::HXServo(HardwareSerial *serial1, uint16_t baud, uint8_t txEn, uint8_t rxEn)
 {
     Mode=USART_1_WIRE;
     Baudrate=baud;
@@ -40,8 +41,7 @@ HXZXServo::HXZXServo(HardwareSerial *serial1, uint16_t baud, uint8_t txEn, uint8
     while (!(*serial));
 }
 
-uint8_t
-checkSumCal (uint8_t buf[],uint8_t offset, uint8_t length)
+uint8_t checkSumCal (uint8_t buf[],uint8_t offset, uint8_t length)
 {
     uint8_t i = offset;
     uint8_t sum = 0;
@@ -52,7 +52,7 @@ checkSumCal (uint8_t buf[],uint8_t offset, uint8_t length)
     return sum;
 }
 
-uint16_t HXZXServo::readServo(uint16_t devAddr,uint8_t regAddr)
+uint16_t HXServo::readServo(uint16_t devAddr,uint8_t regAddr)
 {
     uint8_t i=0;
     uint8_t tmp[4]={0};
@@ -196,7 +196,7 @@ uint16_t HXZXServo::readServo(uint16_t devAddr,uint8_t regAddr)
     return ret;
 }
 
-uint8_t HXZXServo::writeServo(uint16_t devAddr,uint8_t regAddr,uint16_t data)
+uint8_t HXServo::writeServo(uint16_t devAddr,uint8_t regAddr,uint16_t data)
 {
     uint8_t checkSum=0;
     uint8_t tmp=0;
@@ -338,7 +338,7 @@ uint8_t HXZXServo::writeServo(uint16_t devAddr,uint8_t regAddr,uint16_t data)
     return ret;
 }
 
-void HXZXServo::changeToI2C()
+void HXServo::changeToI2C()
 {
     if(serial!=NULL)
     {
@@ -349,7 +349,7 @@ void HXZXServo::changeToI2C()
     Wire.begin(); // join i2c bus (address optional for master)
 }
 
-void HXZXServo::changeToSerial(HardwareSerial *serial1,uint16_t baud)
+void HXServo::changeToSerial(HardwareSerial *serial1,uint16_t baud)
 {
     if(Mode==I2C)
     {
@@ -369,7 +369,7 @@ void HXZXServo::changeToSerial(HardwareSerial *serial1,uint16_t baud)
     while (!(*serial));
 }
 
-void HXZXServo::changeToSerial(HardwareSerial *serial1,uint16_t baud, uint8_t txEn, uint8_t rxEn)
+void HXServo::changeToSerial(HardwareSerial *serial1,uint16_t baud, uint8_t txEn, uint8_t rxEn)
 {
     if(Mode==I2C)
     {
@@ -395,7 +395,7 @@ void HXZXServo::changeToSerial(HardwareSerial *serial1,uint16_t baud, uint8_t tx
     while (!(*serial));
 }
 
-void HXZXServo::changeSerialTimeout(uint16_t tim)
+void HXServo::changeSerialTimeout(uint16_t tim)
 {
     if((Mode==USART_2_WIRE)||(Mode==USART_1_WIRE))
     {

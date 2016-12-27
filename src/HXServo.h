@@ -7,7 +7,7 @@
 #define USART_1_WIRE     0x02 ///单线串口模式
 #define I2C              0x03 ///I2C模式
 
-class HXZXServo
+class HXServo
 {
  public:
   //setting status
@@ -59,9 +59,9 @@ class HXZXServo
   const static uint16_t MASTER_BUSADDR    =  0x0001; ///主机在通信总线上的地址
   const static uint16_t BROADCAST_BUSADDR =  1000; ///广播地址
 
-  HXZXServo();
-  HXZXServo(HardwareSerial *serial1,uint16_t baud);
-  HXZXServo(HardwareSerial *serial1,uint16_t baud, uint8_t txEn, uint8_t rxEn);
+  HXServo();
+  HXServo(HardwareSerial *serial1,uint16_t baud);
+  HXServo(HardwareSerial *serial1,uint16_t baud, uint8_t txEn, uint8_t rxEn);
   uint16_t readServo(uint16_t devAddr,uint8_t regAddr);
   uint8_t writeServo(uint16_t devAddr,uint8_t regAddr,uint16_t data);
   void changeToI2C();
